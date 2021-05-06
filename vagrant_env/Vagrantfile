@@ -6,7 +6,7 @@ required_plugins = %w(
     vagrant-host-shell
     vagrant-sshfs
     vagrant-libvirt
-    )
+)
 required_plugins.each do |plugin|
   system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
 end
@@ -20,9 +20,9 @@ NUM_DATA_HDD = 2
 
 # Vagrant uses it's own build in host inventory.
 ANSIBLE_GROUPS = {
-  "all_groups:vars" => {
+    "all_groups:vars" => {
         "rs_inst_set_root_pass" => "true"
-        }
+    }
 }
 
 VAGRANTFILE_API_VERSION = '2'

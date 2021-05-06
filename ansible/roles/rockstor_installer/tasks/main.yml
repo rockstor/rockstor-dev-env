@@ -1,6 +1,8 @@
 ---
 # TODO: We will need to add some architecture awareness here
-- debug: msg="ansible_facts.architecture={{ ansible_facts.architecture }}"
+- name: Get architecture
+  debug:
+    var: ansible_facts.architecture
 
 - name: Set repo version (Leap)
   set_fact:

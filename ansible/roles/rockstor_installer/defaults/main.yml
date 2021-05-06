@@ -16,10 +16,9 @@ rs_inst_ipv6_disable: yes
 rs_inst_update_os: no
 
 # The user can use this to install any additional packages they may require.
-#rs_inst_useful_server_packages:
-#    - ffmpeg
-#    - mediainfo
-#    - mosh
-#    - tmux
-#    - tree
-
+# rs_inst_useful_server_packages:
+#   - ffmpeg
+#   - mediainfo
+#   - mosh
+#   - tmux
+#   - tree

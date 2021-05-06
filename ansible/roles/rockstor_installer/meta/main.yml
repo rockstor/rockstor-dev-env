@@ -3,15 +3,19 @@ dependencies: []
 galaxy_info:
   role_name: rockstor_installer
   author: mikemonkers
-  description: "OpenSUSE - This role has is a refactoring of the playbook written by Stephen Brown in his repo: https://gitlab.com/StephenBrown2/rockstor-opensuse"
+  company: Rockstor Community
+  description: |
+    Rockstor on OpenSUSE
+
+    This role is a refactoring of the playbook initially
+    written by Stephen Brown:
+    https://gitlab.com/StephenBrown2/rockstor-opensuse
   license: GPLv3
-  min_ansible_version: 2.9
+  min_ansible_version: "2.9"
   platforms:
     - name: opensuse
       versions:
-        - 15.2
-        - 16
+        - "15.2"
+        # - "16" # Eventually...
   galaxy_tags:
     - rockstor
-...
-

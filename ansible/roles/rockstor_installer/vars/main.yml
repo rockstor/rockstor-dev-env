@@ -32,11 +32,11 @@ rs_inst_leap_build_packages: []
 
 rs_inst_tumbleweed_build_packages: []
 
-rs_inst_pip2_packages:
+rs_inst_python2_packages:
     - chardet
     - distro
     - requests
     - six
 
-rs_inst_pip3_packages:
+rs_inst_python3_packages:
     - distro
