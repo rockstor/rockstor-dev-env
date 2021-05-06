@@ -1,0 +1,47 @@
+---
+# TODO: We will need to add some architecture awareness here
+- debug: msg="ansible_facts.architecture={{ ansible_facts.architecture }}"
+
+- name: Set repo version (Leap)
+  set_fact:
+    rs_repo_ver: "leap/{{ ansible_facts.distribution_version }}"
+    oss_repo_ver: "Leap_{{ ansible_facts.distribution_version }}"
+    build_packages: "{{ rs_inst_build_packages + rs_inst_leap_build_packages }}"
+  when:
+    - "'Leap' in ansible_facts.distribution"
+
+- name: Set repo version (Tumbleweed)
+  set_fact:
+    rs_repo_ver: "tumbleweed"
+    oss_repo_ver: "Tumbleweed"
+    build_packages: "{{ rs_inst_build_packages + rs_inst_tumbleweed_build_packages }}"
+  when: "'Tumbleweed' in ansible_facts.distribution"
+
+- name: Verify installer options
+  include_tasks: services.yml
+
+- name: Disable IPv6 in grub
+  include_tasks: ipv6_disable.yml
+  when: rs_inst_ipv6_disable
+
+- name: Install packages
+  include_tasks: packages.yml
+
+- name: Update btrfsprogs to 5.x
+  include_tasks: btrfs_experimental.yml
+  when:
+    - rs_inst_experimental
+    - "'Leap' in ansible_facts.distribution"
+
+- name: Add ‘shells’ OBS repo
+  include_tasks: shells.yml
+
+- name: Set the Root password
+  user:
+    name: "root"
+    password: "{{ rs_inst_root_password }}"
+  when: rs_inst_set_root_pass
+
+- name: Set up Rockstor
+  include_tasks: rockstor.yml
+  when: rs_inst_install_from_repo
