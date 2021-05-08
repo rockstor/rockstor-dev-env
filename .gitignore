@@ -42,3 +42,7 @@ node_modules/
 
 # VS Code
 .vscode
+
+# Vagrant
+.vagrant/
+*.box
